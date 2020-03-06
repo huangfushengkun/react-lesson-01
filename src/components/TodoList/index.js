@@ -3,9 +3,16 @@ import TodoItem from './TodoItem'
 export default class TodoList extends Component {
     render() {
         return (
-            <Fragment>
-                <TodoItem />
-            </Fragment>
+            <ul>
+                {
+                    this.props.todos.map(todo => {
+                        return (
+                            <TodoItem todo={todo}/>
+                        )
+                    })
+                }
+                
+            </ul>
         )
     }
 }
