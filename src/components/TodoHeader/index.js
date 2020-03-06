@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function TodoHeader() {
+export default function TodoHeader(props) {
     return (
-        <div>
-            <h1>代办事件列表</h1>
-        </div>
+        <>
+        <h1>{props.desc}</h1>
+        <h2>{props.children}</h2>
+        </>
+        
     )
 }

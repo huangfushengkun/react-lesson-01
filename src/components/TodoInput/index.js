@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function TodoInput() {
-    return (
-        <div>
-            <input /><button>提交</button>
-        </div>
-    )
+export default class TodoInput extends Component {
+    render(props) {
+        return (
+            <div>
+                <input type="text" /><button>{this.props.btnText}</button>
+            </div>
+        )
+    }
 }
+
