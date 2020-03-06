@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function TodoHeader(props) {
     return (
@@ -8,4 +9,8 @@ export default function TodoHeader(props) {
         </>
         
     )
+}
+TodoHeader.propTypes = {
+    desc: PropTypes.string.isRequired,
+    children:PropTypes.string
 }
