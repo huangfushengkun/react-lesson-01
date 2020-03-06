@@ -14,3 +14,7 @@ TodoHeader.propTypes = {
     desc: PropTypes.string.isRequired,
     children:PropTypes.string
 }
+
+TodoHeader.defaultProps = {
+    desc: '这世上 所有的暂别',
+}
