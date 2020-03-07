@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import TodoItem from './TodoItem'
 export default class TodoList extends Component {
     render() {
@@ -7,7 +7,7 @@ export default class TodoList extends Component {
                 {
                     this.props.todos.map(todo => {
                         return (
-                            <TodoItem todo={todo}/>
+                            <TodoItem key={todo.id} {...todo} />
                         )
                     })
                 }

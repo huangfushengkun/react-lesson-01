@@ -4,7 +4,7 @@ import React, { Component,Fragment } from 'react'
 import {
     TodoInput,
     TodoHeader,
-    TodoList
+    TodoList,Like
 } from './components'
 export default class App extends Component {
     // state = {
@@ -43,6 +43,7 @@ export default class App extends Component {
                 </TodoHeader>
                 <TodoInput btnText="Add" />
                 <TodoList todos={this.state.todos}/>
+                <Like />
             </Fragment>
         )
     }
