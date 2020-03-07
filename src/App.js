@@ -14,6 +14,7 @@ export default class App extends Component {
         super()
         this.state = {
             title: 'huangfu今日事今日毕',
+            currentId: 3,
             // article:'<h1>关于班长的故事！</h1><div>你班长是谁？</div><p>皇甫圣坤</p>',
             todos:[{
                 id:1,
@@ -30,6 +31,23 @@ export default class App extends Component {
             }]
         }
     }
+    addTodo = (todoTitle) => {
+        // console.log(todoTitle);
+        this.setState((prevState)=> {
+            return {
+                currentId: prevState.currentId+1,
+                todos:prevState.todos.concat({
+                    id:prevState.currentId+1,
+                    title:todoTitle,
+                    isCompleted:false
+                })
+            }
+        })
+        // this.setState({
+        //     id: this.state.currentId,
+        // })
+        
+    }
     render() {
         return (
             <Fragment>
@@ -41,7 +59,7 @@ export default class App extends Component {
                     {/* <TodoHeader desc="代办事项列表"> */}
                     {this.state.title}
                 </TodoHeader>
-                <TodoInput btnText="Add" />
+                <TodoInput addTodo={this.addTodo} btnText="Add" />
                 <TodoList todos={this.state.todos}/>
                 <Like />
             </Fragment>
