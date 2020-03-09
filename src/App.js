@@ -6,6 +6,7 @@ import {
     TodoHeader,
     TodoList,Like
 } from './components'
+import { getTodos } from './services'
 export default class App extends Component {
     // state = {
     //     title:'shengkun'
@@ -16,20 +17,27 @@ export default class App extends Component {
             title: 'huangfu今日事今日毕',
             currentId: 3,
             // article:'<h1>关于班长的故事！</h1><div>你班长是谁？</div><p>皇甫圣坤</p>',
-            todos:[{
-                id:1,
-                title:'keep',
-                isCompleted:true
-            },{
-                id:2,
-                title:'吃饭',
-                isCompleted:true
-            },{
-                id:3,
-                title:'睡觉',
-                isCompleted:false
-            }]
+            todos:[],
+            isLoading:false
         }
+    }
+    componentDidMount () {
+        getTodos().then(res => {
+            console.log(res.data);
+            if (res.status === 200) {
+                this.setState((prevState) => {
+                    return {
+                        todos: res.data
+                    } 
+                })
+            }else {
+                // 错误处理
+            }
+            
+        }).catch(err => {
+            console.log(err);
+            
+        })
     }
     addTodo = (todoTitle) => {
         // console.log(todoTitle);
@@ -39,7 +47,7 @@ export default class App extends Component {
                 todos:prevState.todos.concat({
                     id:prevState.currentId+1,
                     title:todoTitle,
-                    isCompleted:false
+                    completed:false
                 })
             }
         })
@@ -53,7 +61,7 @@ export default class App extends Component {
             return {
                 todos:prevState.todos.map( todo => {
                     if (todo.id === id) {
-                        todo.isCompleted = !todo.isCompleted
+                        todo.completed = !todo.completed
                     }
                     return todo
                 })
