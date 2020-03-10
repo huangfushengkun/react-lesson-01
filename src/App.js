@@ -23,11 +23,12 @@ export default class App extends Component {
     }
     componentDidMount () {
         getTodos().then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.status === 200) {
                 this.setState((prevState) => {
                     return {
-                        todos: res.data
+                        todos: res.data,
+                        currentId: res.data.length
                     } 
                 })
             }else {
@@ -37,6 +38,10 @@ export default class App extends Component {
         }).catch(err => {
             console.log(err);
             
+        }).finally(() => {
+            this.setState({
+                isLoading:false
+            })
         })
     }
     addTodo = (todoTitle) => {
@@ -56,7 +61,7 @@ export default class App extends Component {
         // })
     }
     onCompeletedChange = (id) => {
-        console.log('onCompeletedChange',id);
+        // console.log('onCompeletedChange',id);
         this.setState((prevState) => {
             return {
                 todos:prevState.todos.map( todo => {

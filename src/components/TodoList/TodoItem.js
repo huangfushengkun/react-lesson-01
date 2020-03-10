@@ -7,7 +7,6 @@ export default class TodoItem extends Component {
     // }
     // handleDone= (id) => {
     //     console.log(id);
-        
     // }
     static getDerivedStateFromParops () {
 
